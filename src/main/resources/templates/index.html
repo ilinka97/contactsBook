@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html id="indexBg" xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Welcome</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+<body>
+
+	<div id="landingHeader">
+		<h1><i class="fas fa-address-book"></i> Phonebook</h1> 
+	</div>
+
+	<div id="landingWrapper">
+
+		<div id="registrationForm">
+			<form action="" method="post">
+				<input type="text" name="firstName" id="firstName" placeholder="First name" required="required">
+				<input type="text" name="lastName" id="lastName" placeholder="Last name"><br>
+				<input type="password" name="password" id="password" placeholder="Pasword" required="required"><br>
+
+				<input type="submit" name="submit" value="Sign Up">
+			</form>
+
+		</div>
+
+		<div id="loginForm">
+			<form action="" method="post">
+				<input type="text" name="firstName" id="firstName" placeholder="First name"><br>
+				<input type="password" name="password" id="password" placeholder="Pasword"><br>
+
+				<input type="submit" name="submit" value="Log In">
+			</form>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

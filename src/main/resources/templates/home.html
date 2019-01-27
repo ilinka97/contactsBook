@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+<body>
+
+	<div id="helloHeader">
+		<h2><i class="far fa-user"></i>  Hi Ime Prezime</h2>
+		<form method="" action=""> 
+			<button type="submit">
+				Log Out <i class="fas fa-sign-out-alt"></i>
+			</button>
+		</form>
+	</div>
+
+	<div id="coverImage">
+		<h1><i class="fas fa-list-alt"></i> Contacts</h1>
+	</div>
+
+	<div id="nav">
+
+		<form method="" action=""> 
+			<button type="submit" id="add">
+				<i class="fas fa-plus-circle"></i> Add Contact
+			</button>
+		</form>
+
+		<div id="search">
+			<form method="" action=""> 
+				<input type="search" name="searchField" id="searchField" placeholder="Search">
+				<button id="searchButton">
+					<i class="fas fa-search"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<div id="contactTableDiv">
+		
+		<table class="tables">
+			<tr class="tableHeader">
+				<th>&nbsp;</th>
+				<th>Photo</th>
+				<th>Name</th>
+				<th>Phone Number</th>
+				<th>Email</th>
+				<th>Group</th>
+				<th>Address</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+			<tr>
+				<th class="numeration">1</th>
+				<td>hehe slika</td>
+				<td>ko</td>
+				<td>02646</td>
+				<td>mail.com</td>
+				<td>porodica</td>
+				<td>adresa</td>
+				<td><button class="tableButton">Edit</button></td>
+				<td><button class="tableButton">Delete</button></td>
+			</tr>
+			<tr>
+				<th class="numeration">2</th>
+				<td>hehe slika</td>
+				<td>sdfg</td>
+				<td>216464</td>
+				<td>@mail.com</td>
+				<td>posao</td>
+				<td>adr</td>
+				<td><button class="tableButton">Edit</button></td>
+				<td><button class="tableButton">Delete</button></td>
+			</tr>
+			<tr>
+				<th class="numeration">2</th>
+				<td>hehe slika</td>
+				<td>sdfg</td>
+				<td>216464</td>
+				<td>mojmail.com</td>
+				<td>grrrr</td>
+				<td>adr</td>
+				<td><button class="tableButton">Edit</button></td>
+				<td><button class="tableButton">Delete</button></td>
+			</tr>
+		</table>
+
+	</div>
+
+</body>
+</html>
