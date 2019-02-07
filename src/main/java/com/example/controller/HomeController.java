@@ -27,9 +27,7 @@ public class HomeController {
 		
 		List<Contact> contacts=contactService.findAllContacts();
 		
-		for (Contact contact : contacts) {
-			model.addAttribute(contact);
-		}
+		model.addAttribute("contacts", contacts);
 		
 		return "home";
 	}
