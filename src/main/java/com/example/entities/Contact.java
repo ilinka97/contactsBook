@@ -1,6 +1,5 @@
 package com.example.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -15,18 +14,18 @@ import lombok.Data;
 public class Contact {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long contactId;
 	
 	private String contactName;
+	
 	private String phoneNumber;
+	
 	private String email;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(length = 15)
-	private Group group; 
+	private ContactGroup groupType; 
 	
 	private String address;
-	
-	
+
 }

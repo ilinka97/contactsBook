@@ -1,5 +1,5 @@
 package com.example.entities;
 
-public enum Group {
+public enum ContactGroup {
 	FAMILY,WORK,FRIENDS
 }

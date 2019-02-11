@@ -23,11 +23,9 @@
 
 	<div id="nav">
 
-		<form method="" action=""> 
-			<button type="submit" id="add">
+			<a th:href="@{/saveContact}"><button type="submit" id="add">
 				<i class="fas fa-plus-circle"></i> Add Contact
-			</button>
-		</form>
+			</button></a>
 
 		<div id="search">
 			<form method="" action=""> 
@@ -61,7 +59,7 @@
 				<td th:text="${contact.contactName}"></td>
 				<td th:text="${contact.phoneNumber}"></td>
 				<td th:text="${contact.email}"></td>
-				<td th:text="${contact.group}"></td>
+				<td th:text="${contact.groupType.toString().toLowerCase()}"></td> 
 				<td th:text="${contact.address}"></td>
 				<td><button class="tableButton">Edit</button></td>
 				<td><button class="tableButton">Delete</button></td>

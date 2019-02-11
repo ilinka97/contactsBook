@@ -29,4 +29,8 @@ public class ContactService {
 		return contacts;
 		
 	}
+	
+	public void saveContact(Contact contact) {
+		contactRepo.save(contact);	
+	}
 }
