@@ -33,4 +33,9 @@ public class ContactService {
 	public void saveContact(Contact contact) {
 		contactRepo.save(contact);	
 	}
-}
+	
+	public List<Contact> findAllByName(String contactName){
+		return contactRepo.findByContactNameContaining(contactName);
+	}
+	
+ }

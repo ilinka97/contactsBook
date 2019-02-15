@@ -35,28 +35,19 @@
 				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
-			<tr>
-				<th class="numeration">1</th>
+			
+			<tr th:each="contact,i : ${searchResults}" >
+				<td class="numeration" th:text="${i.count}"></td>
 				<td>hehe slika</td>
-				<td>ko</td>
-				<td>02646</td>
-				<td>mail.com</td>
-				<td>porodica</td>
-				<td>adresa</td>
+				<td th:text="${contact.contactName}"></td>
+				<td th:text="${contact.phoneNumber}"></td>
+				<td th:text="${contact.email}"></td>
+				<td th:text="${contact.groupType.toString().toLowerCase()}"></td> 
+				<td th:text="${contact.address}"></td>
 				<td><button class="tableButton">Edit</button></td>
 				<td><button class="tableButton">Delete</button></td>
 			</tr>
-			<tr>
-				<th class="numeration">2</th>
-				<td>hehe slika</td>
-				<td>sdfg</td>
-				<td>216464</td>
-				<td>@mail.com</td>
-				<td>posao</td>
-				<td>adr</td>
-				<td><button class="tableButton">Edit</button></td>
-				<td><button class="tableButton">Delete</button></td>
-			</tr>
+			
 		</table>
 
 	</div>
