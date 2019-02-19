@@ -1,8 +1,11 @@
 package com.example.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +31,10 @@ public class SaveContactController {
 	}
 	
 	@PostMapping
-	public String addContact(Contact contact) {
-		
+	public String addContact(@Valid Contact contact, Errors errors) {
+		if (errors.hasErrors()) {
+			return "addContact";
+		}
 		contactService.saveContact(contact);
 		return "redirect:/home";
 	}

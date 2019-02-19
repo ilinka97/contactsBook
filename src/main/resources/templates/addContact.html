@@ -26,8 +26,13 @@
 			<p>Update image:</p>
 			
 			<input type="text" th:field="*{contactName}"  name="contactName" id="contactName" placeholder="Name"><br>
+			<div class="validationError" th:if="${#fields.hasErrors('contactName')}" th:errors="*{contactName}">Contact name Error</div>
+			
 			<input type="text" th:field="*{phoneNumber}" name="phoneNumber" id="phoneNumber" placeholder="Phone Number"><br>
+			<div class="validationError" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone number Error</div>
+			
 			<input type="email" th:field="*{email}" name="email" id="email" placeholder="Email "><br>
+			
 			<p>Choose group:</p>
 			<select name="groupType" id="groupType">
 				<option th:each="groupType : ${T(com.example.entities.ContactGroup).values()}"
@@ -35,6 +40,7 @@
 					th:text="${groupType.toString().toLowerCase()}">
 				</option>
 			</select><br>
+			
 			<input type="text" th:field="*{address}" name="address" id="address" placeholder="Address"><br>
 
 			<input type="submit" name="submit" value="Submit">
