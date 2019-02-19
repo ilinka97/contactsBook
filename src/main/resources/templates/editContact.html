@@ -21,19 +21,21 @@
 	</div>
 
 	<div id="contactForm">
-		<form action="" method="post">
+		<form th:action="@{/updateContact}" method="POST" th:object="${contact}">
 			<p>Update new image:</p>
-			<input type="file" name="contactPhoto" accept="image/*" /><br>
-			<input type="text" name="contactName" id="contactName" placeholder="old name"><br>
-			<input type="text" name="phoneNumber" id="phoneNumber" placeholder="old phone Number"><br>
-			<input type="email" name="email" id="email" placeholder="old mail "><br>
-			<p>Choose new group:</p>
-			<select name="group" id="group">
-				<option value="family">family</option>
-				<option value="work">work</option>
-				<option value="friends">friends</option>
+			
+			<input type="text" th:field="*{contactName}"  name="contactName" id="contactName" placeholder="old Name"><br>
+			<input type="text" th:field="*{phoneNumber}" name="phoneNumber" id="phoneNumber" placeholder="old Phone Number"><br>
+			<input type="email" th:field="*{email}" name="email" id="email" placeholder="old Email "><br>
+			<p>Choose group:</p>
+			<select name="groupType" id="groupType">
+				<option th:each="groupType : ${T(com.example.entities.ContactGroup).values()}"
+					th:value="${groupType}"
+					th:text="${groupType.toString().toLowerCase()}">
+				</option>
 			</select><br>
-			<input type="text" name="adress" id="address" placeholder="old address"><br>
+			<input type="text" th:field="*{address}" name="address" id="address" placeholder="old Address"><br>
+			<input type="hidden" th:field="*{contactId}">
 
 			<input type="submit" name="submit" value="Save">
 		</form>	

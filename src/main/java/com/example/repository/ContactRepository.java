@@ -11,5 +11,5 @@ import com.example.entities.Contact;
 public interface ContactRepository extends CrudRepository<Contact, Long>{
 	
 	List<Contact> findByContactNameContaining(String contactName);
-	
+	Contact findByContactId(Long contactId);
 }

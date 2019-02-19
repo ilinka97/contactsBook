@@ -41,4 +41,8 @@ public class ContactService {
 	public void deleteContact(Long id) {
 		contactRepo.deleteById(id);
 	}
+	
+	public Contact findContactById(Long contactId) {
+		return contactRepo.findByContactId(contactId);
+	}
  }

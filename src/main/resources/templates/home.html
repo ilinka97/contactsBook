@@ -61,7 +61,7 @@
 				<td th:text="${contact.email}"></td>
 				<td th:text="${contact.groupType.toString().toLowerCase()}"></td> 
 				<td th:text="${contact.address}"></td>
-				<td><a th:href="@{/updateContact}"><button class="tableButton" type="submit">Edit</button></a></td>
+				<td><form th:action="@{/updateContact}" method="GET"><button class="tableButton" type="submit" name="editButton" th:value="${contact.contactId}">Edit</button></form></td>
 				<td><form th:action="@{/home/deleteContact}" method="GET"><button class="tableButton" type="submit" name="deleteButton" th:value="${contact.contactId}">Delete</button></form></td>
 			</tr>
 			
