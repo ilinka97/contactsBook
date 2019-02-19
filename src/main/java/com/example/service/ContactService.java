@@ -38,4 +38,7 @@ public class ContactService {
 		return contactRepo.findByContactNameContaining(contactName);
 	}
 	
+	public void deleteContact(Long id) {
+		contactRepo.deleteById(id);
+	}
  }

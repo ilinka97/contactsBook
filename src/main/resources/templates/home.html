@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:th="http://www.thymeleaf.org">
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
@@ -62,7 +62,7 @@
 				<td th:text="${contact.groupType.toString().toLowerCase()}"></td> 
 				<td th:text="${contact.address}"></td>
 				<td><button class="tableButton">Edit</button></td>
-				<td><button class="tableButton">Delete</button></td>
+				<td><form th:action="@{/home/deleteContact}" method="GET"><button class="tableButton" type="submit" name="deleteButton" th:value="${contact.contactId}">Delete</button></form></td>
 			</tr>
 			
 		</table>

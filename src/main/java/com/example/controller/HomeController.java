@@ -42,4 +42,11 @@ public class HomeController {
 		
 	}
 	
+	@GetMapping("/deleteContact")
+	public String deleteContact(@RequestParam("deleteButton") Long id) {
+		
+		contactService.deleteContact(id);
+		return "redirect:/home";
+		
+	}
 }
