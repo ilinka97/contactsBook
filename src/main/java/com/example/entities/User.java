@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,20 +27,21 @@ public class User implements UserDetails{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long userId;
 	
-	@Size(min=5, message="Username must be at least 5 characters long!")
 	private String username;
 	
 	@Email
 	private String email;
 	
-	@Size(min=8, message="Password must be at least 8 characters long!")
 	private String password;
+	
+	private String passwordConfirm;
 
 	
-	public User(String username, String email, String password) {
+	public User(String username, String email, String password, String passwordConfirm) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.passwordConfirm=passwordConfirm;
 	}
 	
 	@Override

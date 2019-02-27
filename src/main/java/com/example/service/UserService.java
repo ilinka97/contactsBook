@@ -1,14 +1,13 @@
 package com.example.service;
 
-import javax.persistence.EntityExistsException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
-import com.example.dto.UserDto;
 import com.example.entities.User;
 import com.example.repository.UserRepository;
 
+@Service
 public class UserService{
 
 	private UserRepository userRepo;
@@ -20,21 +19,14 @@ public class UserService{
 		this.passwordEncoder=passwordEncoder;
 	}
 	
-	public User registerUserAccount(UserDto userDto){
-		         
-		if (emailExists(userDto.getEmail())) {   
-            throw new EntityExistsException(
-              "There is already an account with that email address:" + userDto.getEmail());
-        }
-		        User user = new User();    
-		        user.setUsername(userDto.getUsername());
-		        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-		        user.setEmail(userDto.getEmail());
-		        return userRepo.save(user);       
-	 	}
+	public void registerUser(/*UserDto userDto*/ User user){
+		user.setPassword(passwordEncoder.encode(user.getPassword())); 
+		userRepo.save(user);
+		      
+	}
 	
-		private boolean emailExists(String email) {
-			  return userRepo.findByEmail(email) != null;
-		}
+	public User findByEmail(String email) {
+		return userRepo.findByEmail(email);
+	}
 		
 }
