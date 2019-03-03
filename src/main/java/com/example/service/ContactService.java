@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.entities.Contact;
+import com.example.entities.User;
 import com.example.repository.ContactRepository;
 
 @Service
@@ -45,4 +46,13 @@ public class ContactService {
 	public Contact findContactById(Long contactId) {
 		return contactRepo.findByContactId(contactId);
 	}
+	
+	public List<Contact> findAllByUser(User user){
+		return contactRepo.findByUser(user);
+	}
+	
+	public List<Contact> findAllByNameWhereUser(User user, String contactName){
+		return contactRepo.findByUserAndContactNameContaining(user, contactName);
+	}
+	
  }

@@ -3,6 +3,7 @@ package com.example.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.entities.Contact;
+import com.example.entities.User;
 import com.example.service.ContactService;
 
 @Controller
@@ -31,10 +33,11 @@ public class SaveContactController {
 	}
 	
 	@PostMapping
-	public String addContact(@Valid Contact contact, Errors errors) {
+	public String addContact(@Valid Contact contact, Errors errors,  @AuthenticationPrincipal User user) {
 		if (errors.hasErrors()) {
 			return "addContact";
 		}
+		contact.setUser(user);
 		contactService.saveContact(contact);
 		return "redirect:/home";
 	}
