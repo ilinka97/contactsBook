@@ -40,7 +40,7 @@ public class WelcomeController {
 			return "index";
 		}
 		userService.registerUser(user);
-		return "redirect:/";
+		return "redirect:/?register=true";
 	}
 	
 }
