@@ -9,7 +9,7 @@
 <body>
 
 	<div id="helloHeader">
-		<h2><i class="far fa-user"></i>  Hi Ime Prezime</h2>
+		<h2 th:inline="text"><i class="far fa-user"></i>  Hello [[${#httpServletRequest.remoteUser}]]</h2>
 		<form method="POST" th:action="@{/logout}"> 
 			<button type="submit">
 				Log Out <i class="fas fa-sign-out-alt"></i>
