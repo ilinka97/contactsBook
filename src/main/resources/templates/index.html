@@ -15,11 +15,13 @@
 	<div id="landingWrapper">
 
 		<div id="registrationForm">
-			<form th:action="@{/welcome/register}" method="POST" th:object="${user}">
+			<form th:action="@{/register}" method="POST" th:object="${user}">
+			
 				<input type="text" th:field="*{username}" name="username" id="username" placeholder="Username" required="required">
 				<div class="validationError" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</div>
 				
-				<input type="email" th:field="*{email}" name="email" id="email" placeholder="Email" required="required"><br>
+				<input type="email" th:field="*{email}" name="email" id="emailUser" placeholder="Email" required="required"><br>
+				<div class="validationError" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
 				
 				<input type="password" th:field="*{password}" name="password" id="password" placeholder="Password" required="required"><br>
 				<div class="validationError" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
@@ -28,14 +30,15 @@
 				<div class="validationError" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}">Password Error</div>
 				
 				<input type="submit" name="submit" value="Sign Up">
+				
 			</form>
-
+			
 		</div>
 
 		<div id="loginForm">
-			<form th:action="@{/welcome/login}" method="POST" th:object="${user}">
-				<input type="text" th:field="*{username}" name="username" id="username" placeholder="Username" required="required">
-				<input type="password" th:field="*{password}" name="password" id="password" placeholder="Password" required="required"><br>
+			<form th:action="@{/login}" method="POST">
+				<input type="text" name="username" id="username" placeholder="Username" required="required">
+				<input type="password" name="password" id="password" placeholder="Password" required="required"><br>
 
 				<input type="submit" name="submit" value="Log In">
 			</form>

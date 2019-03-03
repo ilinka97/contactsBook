@@ -19,7 +19,7 @@ public class UserService{
 		this.passwordEncoder=passwordEncoder;
 	}
 	
-	public void registerUser(/*UserDto userDto*/ User user){
+	public void registerUser(User user){
 		user.setPassword(passwordEncoder.encode(user.getPassword())); 
 		userRepo.save(user);
 		      

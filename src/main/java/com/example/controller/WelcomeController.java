@@ -14,7 +14,7 @@ import com.example.service.UserService;
 import com.example.validation.UserValidator;
 
 @Controller
-@RequestMapping("/welcome")
+@RequestMapping("/")
 public class WelcomeController {
 	
 	private UserService userService;
@@ -28,20 +28,19 @@ public class WelcomeController {
 
 	@GetMapping
 	public String showWelcomePage(Model model) {
-	   // model.addAttribute("user", new UserDto());
 		model.addAttribute("user",new User());
 	    return "index";
 	}
 	
 	@PostMapping("/register")
-	public String registerUserAccount(@ModelAttribute("user") User user, BindingResult bindingResult) {
+	public String registerUserAccount(@ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
 		userValidator.validate(user, bindingResult);
 		
 		if (bindingResult.hasErrors()) {
 			return "index";
 		}
 		userService.registerUser(user);
-		return "redirect:/home";
+		return "redirect:/";
 	}
 	
 }

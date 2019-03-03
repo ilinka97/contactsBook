@@ -32,21 +32,21 @@ public class UserValidator implements Validator{
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "Not empty");
 		if(user.getUsername().length() < 6 || user.getUsername().length() > 32){
-			errors.rejectValue("username", "Please use between 6 and 32 characters.");
+			errors.rejectValue("username", "Size.userForm.username");
 		}
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Taken");
 		if (userService.findByEmail(user.getEmail()) != null) {
-			errors.rejectValue("email","That email is already taken!");
+			errors.rejectValue("email","Duplicate.userForm.email");
 		}
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Not empty");
 		if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
-			errors.rejectValue("password", "Password must be at least 8 characters long!");
+			errors.rejectValue("password", "Size.userForm.password");
 		}
 		
 		if (!user.getPasswordConfirm().equals(user.getPassword())) {
-			errors.rejectValue("passwordConfirm", "Passwords must match!");
+			errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
 		}
 		
 	}
