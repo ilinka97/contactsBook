@@ -22,8 +22,9 @@
 	</div>
 
 	<div id="contactForm">
-		<form th:action="@{/saveContact}" method="POST"  th:object="${contact}">
+		<form th:action="@{/saveContact}" method="POST"  th:object="${contact}" enctype="multipart/form-data">
 			<p>Update image:</p>
+			<input type="file" name="contactPhoto" accept="image/*" /><br>
 			
 			<input type="text" th:field="*{contactName}"  name="contactName" id="contactName" placeholder="Name"><br>
 			<div class="validationError" th:if="${#fields.hasErrors('contactName')}" th:errors="*{contactName}">Contact name Error</div>

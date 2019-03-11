@@ -10,9 +10,12 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.entities.Contact;
 import com.example.entities.User;
+import com.example.service.ContactPhotoService;
 import com.example.service.ContactService;
 
 @Controller
@@ -20,10 +23,12 @@ import com.example.service.ContactService;
 public class SaveContactController {
 
 	private ContactService contactService;
+	private ContactPhotoService photoService;
 	
 	@Autowired
-	public SaveContactController(ContactService contactService) {
+	public SaveContactController(ContactService contactService, ContactPhotoService photoService) {
 		this.contactService=contactService;
+		this.photoService=photoService;
 	}
 	
 	@GetMapping
@@ -33,10 +38,19 @@ public class SaveContactController {
 	}
 	
 	@PostMapping
-	public String addContact(@Valid Contact contact, Errors errors,  @AuthenticationPrincipal User user) {
+	public String addContact(@Valid Contact contact, Errors errors,  @AuthenticationPrincipal User user,
+							@RequestParam("contactPhoto") MultipartFile file) {
+		
 		if (errors.hasErrors()) {
 			return "addContact";
 		}
+		
+		if (file.isEmpty()) {
+            contact.setPhotoPath("/images/defaultContact.jpg");
+        }else{
+			contact.setPhotoPath(photoService.savePhoto(file));
+        }
+		
 		contact.setUser(user);
 		contactService.saveContact(contact);
 		return "redirect:/home";
