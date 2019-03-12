@@ -39,6 +39,6 @@ public class Contact {
 	@ManyToOne
 	private User user;
 	
-	private String photoPath;
+	private String photoFilename;
 	
 }

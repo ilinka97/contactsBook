@@ -41,20 +41,17 @@ public class HomeController {
 	public ResponseEntity<?> showOnePhoto(@PathVariable String filename){
 		
 		try {
-			
 			Resource file=photoService.findOnePhoto(filename);
 			return ResponseEntity.ok()
 					.contentLength(file.contentLength())
 					.contentType(MediaType.IMAGE_JPEG)
 					.body(new InputStreamResource(file.getInputStream()));
-			
 		} catch (IOException e) {
 			return ResponseEntity.badRequest()
 					.body("Couldn't find "+filename+e.getMessage());
 		}
 		
 	}
-	
 	
 	@GetMapping
 	public String showAllContacts(Model model, @AuthenticationPrincipal User user) {

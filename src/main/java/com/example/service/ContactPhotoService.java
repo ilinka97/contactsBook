@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class ContactPhotoService {
 
-	private static String UPLOADED_FOLDER = "C:\\Users\\Danijel&Ika\\Documents\\contact-book-images\\";
+	private static String UPLOAD_FOLDER = "src/main/resources/static/images/contact-photos/";
 	
 	private ResourceLoader resourceLoader;
 	
@@ -25,18 +25,15 @@ public class ContactPhotoService {
 	
 	public String savePhoto(MultipartFile file) {
 		
-		String absolutePath="";
-		
 		try{
 			byte[] bytes = file.getBytes();
-	        Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+	        Path path = Paths.get(UPLOAD_FOLDER + file.getOriginalFilename());
 	        Files.write(path, bytes);
-	        absolutePath= path.toAbsolutePath().toString();
 	    }catch(IOException e){
 	        e.printStackTrace();
 	    }
 		
-		return absolutePath;
+		return file.getOriginalFilename();
 	}
 	
 	public Resource findOnePhoto(String photoPath) {
