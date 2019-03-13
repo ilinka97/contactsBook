@@ -23,7 +23,7 @@ import com.example.service.ContactService;
 public class SaveContactController {
 
 	private static String UPLOAD_DIR = "/images/contact-photos/";
-	private static String UPLOAD_DEF_DIR = "/images/defaultContact.jpg";
+	private static String UPLOAD_DEF_DIR = "/images/defaultContact.png";
 	
 	private ContactService contactService;
 	private ContactPhotoService photoService;
