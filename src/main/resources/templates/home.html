@@ -67,7 +67,7 @@
 				<td th:text="${contact.groupType.toString().toLowerCase()}"></td> 
 				<td th:text="${contact.address}" onclick="redirectTo(this.innerHTML);"></td>
 				<td><form th:action="@{/updateContact}" method="GET"><button class="tableButton" type="submit" name="editButton" th:value="${contact.contactId}">Edit</button></form></td>
-				<td><form th:action="@{/home/deleteContact}" method="GET"><button class="tableButton" type="submit" name="deleteButton" th:value="${contact.contactId}">Delete</button></form></td>
+				<td><form th:action="@{'/home/deleteContact/' + ${contact.photoFilename}}" method="GET"><button class="tableButton" type="submit" name="deleteButton" th:value="${contact.contactId}">Delete</button></form></td>
 			</tr>
 			
 		</table>

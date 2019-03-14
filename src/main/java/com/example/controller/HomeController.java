@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.example.entities.Contact;
 import com.example.entities.User;
 import com.example.service.ContactPhotoService;
@@ -34,18 +36,19 @@ public class HomeController {
 		this.photoService=photoService;
 	}
 	
-	@GetMapping("/{filename}")
-	public ResponseEntity<?> showOnePhoto(@PathVariable String filename){
+	@GetMapping("/{photoFilename}")
+	@ResponseBody
+	public ResponseEntity<?> showOnePhoto(@PathVariable String photoFilename){
 		
 		try {
-			Resource file=photoService.findOnePhoto(filename);
+			Resource file=photoService.findOnePhoto(photoFilename);
 			return ResponseEntity.ok()
 					.contentLength(file.contentLength())
 					.contentType(MediaType.IMAGE_JPEG)
 					.body(new InputStreamResource(file.getInputStream()));
 		} catch (IOException e) {
 			return ResponseEntity.badRequest()
-					.body("Couldn't find "+filename+e.getMessage());
+					.body("Couldn't find "+photoFilename+e.getMessage());
 		}
 		
 	}
@@ -68,9 +71,12 @@ public class HomeController {
 		
 	}
 	
-	@GetMapping("/deleteContact")
-	public String deleteContact(@RequestParam("deleteButton") Long id) {
+	@GetMapping("/deleteContact" + "/{photoFilename}")
+	public String deleteContact(@RequestParam("deleteButton") Long id, @PathVariable String photoFilename) throws IOException {
 		
+		if (!photoFilename.equals("defaultContact.png")) {
+			photoService.deletePhoto(photoFilename);
+		}
 		contactService.deleteContact(id);
 		return "redirect:/home";
 		

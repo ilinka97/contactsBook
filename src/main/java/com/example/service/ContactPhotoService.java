@@ -36,7 +36,11 @@ public class ContactPhotoService {
 		return file.getOriginalFilename();
 	}
 	
-	public Resource findOnePhoto(String photoPath) {
-		return resourceLoader.getResource(photoPath);
+	public Resource findOnePhoto(String photoFilename) {
+		return resourceLoader.getResource(photoFilename);
+	}
+	
+	public void deletePhoto(String photoFilename) throws IOException {
+		Files.deleteIfExists(Paths.get(UPLOAD_FOLDER, photoFilename));
 	}
 }
