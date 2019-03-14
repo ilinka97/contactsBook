@@ -21,9 +21,6 @@ import com.example.service.ContactService;
 @Controller
 @RequestMapping("/saveContact")
 public class SaveContactController {
-
-	private static String UPLOAD_DIR = "/images/contact-photos/";
-	private static String UPLOAD_DEF_DIR = "/images/defaultContact.png";
 	
 	private ContactService contactService;
 	private ContactPhotoService photoService;
@@ -49,9 +46,9 @@ public class SaveContactController {
 		}
 		
 		if (file.isEmpty()) {
-            contact.setPhotoFilename(UPLOAD_DEF_DIR);
+            contact.setPhotoFilename("defaultContact.png");
         }else{
-			contact.setPhotoFilename(UPLOAD_DIR + photoService.savePhoto(file));
+			contact.setPhotoFilename(photoService.savePhoto(file));
         }
 		
 		contact.setUser(user);

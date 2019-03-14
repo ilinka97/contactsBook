@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class ContactPhotoService {
 
-	private static String UPLOAD_FOLDER = "src/main/resources/static/images/contact-photos/";
+	private static String UPLOAD_FOLDER = "/Users/Danijel&Ika/Documents/contact-book-images/";
 	
 	private ResourceLoader resourceLoader;
 	
