@@ -38,7 +38,7 @@
 			
 			<tr th:each="contact,i : ${searchResults}" >
 				<td class="numeration" th:text="${i.count}"></td>
-				<td>hehe slika</td>
+				<td><img alt="photo" th:src="@{'/contact-book-images/' + ${contact.photoFilename}}" class="contactPhoto"/></td>
 				<td th:text="${contact.contactName}"></td>
 				<td th:text="${contact.phoneNumber}"></td>
 				<td th:text="${contact.email}"></td>
