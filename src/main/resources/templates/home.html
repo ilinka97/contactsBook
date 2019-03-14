@@ -60,7 +60,7 @@
 			
 			<tr th:each="contact,i : ${contacts}" >
 				<td class="numeration" th:text="${i.count}"></td>
-				<td><img alt="zamalSlika" th:src="@{'/contact-book-images/' + ${contact.photoFilename}}"/></td>
+				<td><img alt="photo" th:src="@{'/contact-book-images/' + ${contact.photoFilename}}" class="contactPhoto"/></td>
 				<td th:text="${contact.contactName}"></td>
 				<td th:text="${contact.phoneNumber}"></td>
 				<td th:text="${contact.email}"></td>

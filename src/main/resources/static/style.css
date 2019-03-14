@@ -157,7 +157,7 @@ input[type="password"],
 
 .tables td,th{
 	border-bottom: 1px solid #A2A2A2;
-	padding: 3px 5px 0;
+	padding: 3px 5px;
 	height: 25px;
 	text-align: left;
 }
@@ -176,6 +176,12 @@ table .numeration{
 .tableHeader th{
 	background: #f4f8f9;
 	vertical-align: middle;
+}
+
+.contactPhoto{
+	max-height: 70px;
+	max-width: 70px;
+	margin-top: 4px;
 }
 
 #contactForm{
