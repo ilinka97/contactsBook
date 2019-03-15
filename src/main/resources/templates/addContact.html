@@ -22,6 +22,9 @@
 	</div>
 
 	<div id="contactForm">
+	
+		<div th:if="${flash}" th:text="${flash}"></div><br>
+	
 		<form th:action="@{/saveContact}" method="POST"  th:object="${contact}" enctype="multipart/form-data">
 			<p>Update image:</p>
 			<input type="file" name="contactPhoto" accept="image/*" /><br>
