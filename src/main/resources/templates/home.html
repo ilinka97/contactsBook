@@ -5,11 +5,6 @@
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-		<script type="text/javascript">
-			function redirectTo(address){
-			     window.open('https://maps.google.com/maps?q='+address);			
-			}
-		</script>
 </head>
 <body>
 
@@ -65,7 +60,7 @@
 				<td th:text="${contact.phoneNumber}"></td>
 				<td th:text="${contact.email}"></td>
 				<td th:text="${contact.groupType.toString().toLowerCase()}"></td> 
-				<td th:text="${contact.address}" onclick="redirectTo(this.innerHTML);"></td>
+				<td th:text="${contact.address}" onclick="openMap(this.innerHTML);"></td>
 				<td><form th:action="@{/updateContact}" method="GET"><button class="tableButton" type="submit" name="editButton" th:value="${contact.contactId}">Edit</button></form></td>
 				<td><form th:action="@{'/home/deleteContact/' + ${contact.photoFilename}}" method="GET"><button class="tableButton" type="submit" name="deleteButton" th:value="${contact.contactId}">Delete</button></form></td>
 			</tr>
@@ -73,6 +68,6 @@
 		</table>
 		
 	</div>
-
+	<script type="text/javascript" th:src="@{/js/script.js}"></script>
 </body>
 </html>

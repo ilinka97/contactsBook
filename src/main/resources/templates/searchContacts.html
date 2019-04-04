@@ -43,7 +43,7 @@
 				<td th:text="${contact.phoneNumber}"></td>
 				<td th:text="${contact.email}"></td>
 				<td th:text="${contact.groupType.toString().toLowerCase()}"></td> 
-				<td th:text="${contact.address}"></td>
+				<td th:text="${contact.address}" onclick="openMap(this.innerHTML);"></td>
 				<td><form th:action="@{/updateContact}" method="GET"><button class="tableButton" type="submit" name="editButton" th:value="${contact.contactId}">Edit</button></form></td>
 				<td><form th:action="@{'/home/deleteContact/' + ${contact.photoFilename}}" method="GET"><button class="tableButton" type="submit" name="deleteButton" th:value="${contact.contactId}">Delete</button></form></td>
 			</tr>
@@ -51,6 +51,6 @@
 		</table>
 
 	</div>
-
+	<script type="text/javascript" th:src="@{/js/script.js}"></script>
 </body>
 </html>
